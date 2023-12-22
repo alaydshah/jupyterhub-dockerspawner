@@ -1,26 +1,27 @@
-# JupyterHub mit DockerSpawner
+# JupyterHub DockerSpawner
 
-Dieses Projekt enthält eine Beispielkonfiguration für einen JupyterHub-Server, der in Docker ausgeführt wird. Der JupyterHub ermöglicht es dir, Jupyter-Notebooks zu starten und gemeinsam mit anderen Nutzern zu bearbeiten.
+This project contains a sample configuration for a JupyterHub server running in Docker. The JupyterHub allows you to start Jupyter notebooks and edit them together with other users.
 
-## Dateien
+## Files
 
-- `docker-compose.yml`: Docker Compose-Datei, die den JupyterHub-Server startet
-- `Dockerfile`: Dockerfile, das das Image für den Jupyter Notebook Server definiert
-- `jupyterhub_config.py`: Konfigurationsdatei für den JupyterHub-Server
+- `docker-compose.yml`: Docker Compose file that starts the JupyterHub server
+- `Dockerfile`: Dockerfile that defines the image for the Jupyter Notebook Server
+- `jupyterhub_config.py`: Configuration file for the JupyterHub server
 
-## Verwendung
+## Usage
 
-1. Stelle sicher, dass Docker installiert ist
-2. Lade das Repository herunter oder klonen es von Github
-3. Navigiere in das Projektverzeichnis
-4. Führe `docker-compose up -d` aus, um den JupyterHub-Server zu starten
-5. Öffne `http://localhost:8000` in deinem Browser und melde dich an
+1. Make sure Docker is installed
+2. Download or clone the repository from Github
+3. Navigate to the project directory
+4. Run `docker-compose up -d` to start the JupyterHub server
+5. Open `http://<host-ip>:8000` in your browser and Sign up to create new user
+6. Login with the user creds created in Step 5.
 
-## Hinweise
+## Hints
 
-- Die Jupyter-Notebooks werden standardmäßig im Verzeichnis `/home/jovyan/work` im Container gespeichert.
-- Die Nutzer-Notebooks werden in separaten Docker-Volumes gespeichert, die nach dem Schema `jupyterhub-user-{username}` benannt sind. 
-- In der Datei `jupyterhub_config.py` können weitere Konfigurationen vorgenommen werden, z.B. das Hinzufügen von Nutzern oder das Ändern des Anmeldebildschirms.
-- Weitere Informationen findest du in der [JupyterHub-Dokumentation](https://jupyterhub.readthedocs.io/en/stable/index.html).
+- By default, the Jupyter notebooks are stored in the `/home/jovyan/work` directory in the container.
+- The user notebooks are stored in separate Docker volumes named according to the `jupyterhub-user-{username}` scheme.
+- Additional configurations can be made in the `jupyterhub_config.py` file, e.g. adding users or changing the login screen.
+- For more information, see the [JupyterHub documentation](https://jupyterhub.readthedocs.io/en/stable/index.html).
 
-Viel Spaß :-)
+Have fun :-)
