@@ -18,7 +18,7 @@ c.JupyterHub.spawner_class = DockerSpawner
 c.NativeAuthenticator.create_system_users = True
 
 
-notebook_dir = '/home/{username}/'
+notebook_dir = os.environ.get('DOCKER_NOTEBOOK_DIR') or '/home/jovyan/work'
 c.DockerSpawner.notebook_dir = notebook_dir
 
 c.DockerSpawner.volumes = { 'jupyterhub-user-{username}': notebook_dir }
@@ -31,3 +31,14 @@ c.JupyterHub.db_url = "sqlite:///data/jupyterhub.sqlite"
 c.Authenticator.allowed_users = set()
 c.Authenticator.admin_users = {'myadmin'}
 c.NativeAuthenticator.open_signup = True
+
+# Run a bootstrapping shell script
+from subprocess import check_call
+import os
+def my_script_hook(spawner):
+    username = spawner.user.name # get the username
+    script = os.path.join(os.path.dirname(__file__), 'bootstrap.sh')
+    check_call([script, username])
+
+# attach the hook function to the spawner
+c.Spawner.pre_spawn_hook = my_script_hook
