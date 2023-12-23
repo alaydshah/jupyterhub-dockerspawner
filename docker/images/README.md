@@ -10,5 +10,4 @@ Modified Docker files from docker-stacks repo: https://github.com/jupyter/docker
       - `docker-stacks-foundation`
 
 > Note: In order to build or modify an intermediate image, all subsequent children images would have to be rebuilt.
-> 
-Have fun :-)
+
