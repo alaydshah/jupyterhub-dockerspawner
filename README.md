@@ -1,6 +1,9 @@
 # JupyterHub DockerSpawner
 
 This repo contains a sample configuration for a JupyterHub server running in Docker. The JupyterHub allows to start Jupyter notebooks and edit them together with other users.
+![image](https://github.com/alaydshah/jupyterhub-dockerspawner/assets/25189188/071fe015-d787-47bf-8b78-94dc5315d8e1)
+
+
 
 ## Files
 
