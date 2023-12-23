@@ -32,13 +32,12 @@ else
     echo "...creating a directory for the user: $USER_DIRECTORY"
     mkdir $USER_DIRECTORY
 
-
-    echo "...initial content loading for user ..."
-    mkdir $USER_DIRECTORY/tutorials
-    cd $USER_DIRECTORY/tutorials
-    wget https://github.com/jakevdp/PythonDataScienceHandbook/archive/HEAD.zip
-    unzip -o HEAD.zip
-    rm HEAD.zip
+#    echo "...initial content loading for user ..."
+#    mkdir $USER_DIRECTORY/tutorials
+#    cd $USER_DIRECTORY/tutorials
+#    wget https://github.com/jakevdp/PythonDataScienceHandbook/archive/HEAD.zip
+#    unzip -o HEAD.zip
+#    rm HEAD.zip
 fi
 
 exit 0

@@ -1,6 +1,7 @@
 from dockerspawner import DockerSpawner
 from nativeauthenticator import NativeAuthenticator
 import os
+import docker
 
 c.JupyterHub.authenticator_class = NativeAuthenticator
 
@@ -22,10 +23,19 @@ notebook_dir = os.environ.get('DOCKER_NOTEBOOK_DIR') or '/home/jovyan/work'
 c.DockerSpawner.notebook_dir = notebook_dir
 
 c.DockerSpawner.volumes = { 'jupyterhub-user-{username}': notebook_dir }
-c.DockerSpawner.image = "jupyter/datascience-notebook:latest"
+c.DockerSpawner.image = "scipy-notebook"
+
+c.DockerSpawner.extra_host_config = {
+    "device_requests": [
+        docker.types.DeviceRequest(
+            count=-1,
+            capabilities=[["gpu"]],
+        ),
+    ],
+}
 
 # Persistence
-c.JupyterHub.db_url = "sqlite:///data/jupyterhub.sqlite"
+# c.JupyterHub.db_url = "sqlite:///data/jupyterhub.sqlite"
 
 # Enable user registration
 c.Authenticator.allowed_users = set()
